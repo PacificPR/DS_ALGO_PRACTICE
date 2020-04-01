@@ -1,0 +1,28 @@
+###ROW MAJOR FOR 2D ARRAYS :
+
+Row Major System:
+
+The address of a location in Row Major System is calculated using the following
+formula:
+
+Address of A[i][J] = B + (W * [N*(i–Lr)+(j–Lc)])
+FOR arrays in C/C++,with 0 as starting address, A[i][J] = B + (W *[N*(I)+(J)])
+
+Column Major System:
+
+The address of a location in Column Major System is calculated using the
+following formula:
+
+Address of              A[i][j]  = B+W*[(i–Lr)+M*(j–Lc)]
+ FOR arrays in C/C++,with 0 as starting address, A[i][j]=B+W*[(i–Lr)+M*(j–Lc)]
+
+Where,
+B = Base address
+i = Row subscript of element whose address is to be found
+j = Column subscript of element whose address is to be found
+W = Storage Size of one element stored in the array (in byte)
+Lr = Lower limit of row/start row index of matrix, if not given assume 0 (zero)
+Lc = Lower limit of column/start column index of matrix, if not given assume 0
+(zero)
+M = Number of row of the given matrix
+N = Number of column of the given matrix
