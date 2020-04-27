@@ -1,4 +1,4 @@
-/* Some problems appear hard though they are very easy. Today Aakash is stuck in a range query problem. He has been given an array with only numbers 0 and 1. There are two types of queries -
+/* Today Aakash is stuck in a range query problem. He has been given an array with only numbers 0 and 1. There are two types of queries -
 0 L R : Check whether the number formed from the array elements L to R is even or odd and print EVEN or ODD respectively. Number formation is the binary number from the bits status in the array L to R
 1 X : Flip the Xth bit in the array
 Indexing is 1 based
