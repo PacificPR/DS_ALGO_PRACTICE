@@ -21,6 +21,9 @@ void main() {
 
     //int *arr;
     int arr[9]={11,22,33,44,55,66,77,88,99};
+    printf("\n****** %d",&arr);
+    printf("\n****** %d",arr);
+
     printf("\n\nArray:\nValue of a[0]=%d\n",arr[0]);
     printf("Address of a[0]=%d\n",arr);
     printf("Value of a[1]=%d\n",*(arr+1));

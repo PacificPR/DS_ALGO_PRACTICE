@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(){
-   int a = __gcd(18,42);
+   int a = __gcd(357,234);
    cout<<a<<endl;
    return 0;
 } 
