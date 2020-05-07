@@ -1,0 +1,68 @@
+                                    ##########  Array class in C++  ############
+
+The introduction of array class from C++11 has offered a better alternative for C-style arrays. The advantages of array class over C-style array are :-
+
+    *Array classes knows its own size, whereas C-style arrays lack this property. So when passing to functions, we don’t need to pass size of Array as a separate parameter.
+    *With C-style array there is more risk of array being decayed into a pointer. Array classes don’t decay into pointers
+    *Array classes are generally more efficient, light-weight and reliable than C-style arrays.
+
+    What is Array Decay?
+The loss of type and dimensions of an array is known as decay of an array.
+This generally occurs when we pass the array into function by value or pointer. 
+What it does is, it sends first address to the array which is a pointer, 
+hence the size of array is not the original one, but the one occupied by the pointer in the memory
+
+*****Syntax
+    std::array<int,n> ar;  {we have to include it , #include<array> }
+    this will declare an integer array , ar of size n
+
+######### OPERATIONS ON ARRAYS 
+
+CONSIDER AN array , array<int,5> ar ={12,32,1,22,98};
+
+1. at() :- This function is used to access the elements of array. 
+            Eg-> ar.at(2); 
+            O/p-> 1
+
+2. get() :- This function is also used to access the elements of array. This function is not the member of array class but overloaded function from class tuple.
+            Eg->get<1>(ar);
+            O/p-> 32
+            
+3. operator[] :- This is similar to C-style arrays. This method is also used to access array elements.
+            Eg->ar[3];
+            O/p-> 22
+
+//EACH OF THE ABOVE ARE 0-indexed 
+
+4. front() :- This returns the first element of array.
+              Eg->ar.front();
+              O/p-> 12
+5. back() :- This returns the last element of array.
+              Eg->ar.back();
+              O/p-> 98
+
+6. size() :- It returns the number of elements in array. This is a property that C-style arrays lack.
+              Eg->ar.size()
+              O/p-> 5
+
+7. max_size() :- It returns the maximum number of elements array can hold i.e, the size with which array is declared. The size() and max_size() return the same value.
+              Eg->ar.max_size()
+              O/p-> 5
+
+8. swap() :- The swap() swaps all elements of one array with other.
+              Eg->ar.swap(ar1)
+
+9. empty() :- This function returns true when the array size is zero else returns false.
+              Eg->ar.empty()
+              O/p->false
+
+10. fill() :- This function is used to fill the entire array with a particular value.
+              Eg->ar.fill(5)
+              ar={0,0,0,0,0}
+
+11. data() :-  Returns a pointer to the first element in the array object.
+               Because elements in the array are stored in contiguous storage locations, the pointer retrieved can be offset to access any element in the array.
+               int *a=ar.data();
+               a[0]->12
+
+
