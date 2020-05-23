@@ -7,7 +7,8 @@
 
 //In all the above cases, the complexity is the same because no matter how the elements are placed in the array, the algorithm goes through n+k times.
 
-//There is no comparison between any elements, so it is better than comparison based sorting techniques. But, it is bad if the integers are very large because the array of that size should be made.
+//There is no comparison between any elements, so it is better than comparison based sorting techniques. 
+//But, it is bad if the integers are very large because the array of that size should be made.
 
 //Space Complexity:
 //The space complexity of Counting Sort is O(max). Larger the range of elements, larger is the space complexity.

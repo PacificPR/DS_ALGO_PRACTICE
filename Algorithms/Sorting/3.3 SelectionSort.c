@@ -1,6 +1,5 @@
-//The selection sort algorithm sorts an array by repeatedly finding the
-//minimum element (considering ascending order) from unsorted part and putting
-//it at the beginning. The algorithm maintains two subarrays in a given array.
+//The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part 
+//and putting it at the beginning. The algorithm maintains two subarrays in a given array.
 //
 //1) The subarray which is already sorted.
 //2) Remaining subarray which is unsorted.
@@ -31,7 +30,7 @@ void swap(int *p,int *q){
 }
 
 void Selectionsort(int *a,int n){ 
-    int i,k,j;
+    int i,k,j; //k stores the minindex  
     
     for(i=0;i<n;i++){
 
@@ -44,6 +43,21 @@ void Selectionsort(int *a,int n){
 
 }
 
+void selsort(int *a,int n){  
+    int i,j;
+    int minind;
+    for(i=0;i<n;i++){
+        minind = i;
+        for(j=i+1;j<n;j++) {
+            if(a[j]<a[minind])
+                minind = j;
+        }
+    swap(&a[i],&a[minind]);
+    }
+
+
+}
+
 void main(){
     int i,k,n,*a;
     printf("Enter the number of elements in array\n");
@@ -52,7 +66,8 @@ void main(){
     printf("Enter the numbers to be Sorted\n");
     for(i=0;i<n;i++)
         scanf("%d",a+i);
-    Selectionsort(a,n);
+    //Selectionsort(a,n);
+    selsort(a,n);
     printf("SORTED ARRAY =  ");
     for(i=0;i<n;i++)
         printf("%d ",*(a+i));

@@ -47,13 +47,45 @@ int Partition(int *a,int l,int h){
 
 }
 
+int part(int *a,int l,int h){
+   int p,i,j;
+   j=l;
+   p=a[l];
+
+   for(i=l+1;i<=h;i++){
+       if(a[i]<=p){
+           j++;
+           swap(&a[i],&a[j]);
+       }
+   }
+   //a[l+1,l+2....j] has element <=p ,
+   //a[j+1,j+2.....i] has element > p
+   swap(&a[l],&a[j]);
+   return j;
+}
+
 void QuickSort(int *a,int l,int h){
     int j;
     if(l<h){
-        j=Partition(a,l,h);
-        QuickSort(a,l,j);
+        j=part(a,l,h);
+        QuickSort(a,l,j-1);
         QuickSort(a,j+1,h);
     }
+    //TAIL RECURSION - READ ABOUT IT
+    /*
+     while(l<h){
+        j=part(a,l,h);
+        if((j-l)<(h-j)){
+            QucikSort(a,l,j-1);
+            l=j+1;
+        }
+        else{
+            QucikSort(a,j+1,h);
+            h=j-1;
+        }
+    }
+            
+    */
 }
 
 void main(){
@@ -65,10 +97,11 @@ void main(){
     for(i=0;i<n;i++)
         scanf("%d",a+i);
     a[i]=INT_MAX;
-    QuickSort(a,0,n);
+    QuickSort(a,0,n-1);
     printf("SORTED ARRAY =  ");
     for(i=0;i<n;i++)
     printf("%d ",*(a+i));
     free(a);
 }
 
+//Read about INTRO SORT

@@ -20,7 +20,6 @@
 //Stable: Yes  {If no. is part of key-value pair,their order won't be distrubed
 //              even if value is same of 2 different keys}
 
-
 #include<stdlib.h>
 #include<stdio.h>
 
@@ -61,3 +60,5 @@ void main(){
     for(i=0;i<n;i++)
         printf("%d ",*(a+i));
 }
+
+//The flag makes it adaptive 
