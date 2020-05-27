@@ -7,9 +7,9 @@ Insertion Sort is useful when the list is small or almost sorted.
 It also has O(1) space complexity.
 
 ## BUBBLE AND SELECTION SORT :
-Not really xD
+Not really useful xD
 Selection sort is worst tbh , it's complexity is O(n^2) even in best cases.
-They also have O(1) space complexity.
+Only thing good, they have O(1) space complexity.
 
 ## MERGE SORT :
 Has a time complexity O(nlogn) in every case.(Thanks to Divide and Conquer)
