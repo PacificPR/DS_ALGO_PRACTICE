@@ -1,0 +1,128 @@
+                                                        ******************* Recursion ********************
+
+
+####### What is Recursion?
+The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function.
+Using recursive algorithm, certain problems can be solved quite easily.
+Examples of such problems are Towers of Hanoi (TOH), Inorder/Preorder/Postorder Tree Traversals, DFS of Graph, etc.
+
+####### What is base condition in recursion?
+In the recursive program, the solution to the base case is provided and the solution of the bigger problem is expressed in terms of smaller problems.
+
+int fact(int n)
+{
+    if (n < = 1) // base case
+        return 1;
+    else    
+        return n*fact(n-1);    
+}
+In the above example, base case for n < = 1 is defined and larger value of number can be solved by converting to smaller one till base case is reached.
+
+The idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion.
+For example, we compute factorial n if we know factorial of (n-1). The base case for factorial would be n = 0. We return 1 when n = 0.
+
+####### Why Stack Overflow error occurs in recursion?
+If the base case is not reached or not defined, then the stack overflow problem may arise.
+If the memory is exhausted by these functions on the stack, it will cause a stack overflow error.
+
+How memory is allocated to different function calls in recursion?
+When any function is called from main(), the memory is allocated to it on the stack.
+A recursive function calls itself, the memory for a called function is allocated on top of memory allocated to calling function and different copy of local variables is created for each function call.
+When the base case is reached, the function returns its value to the function by whom it is called and memory is de-allocated and the process continues.
+
+####### Types of Recursions:
+
+** Recursion are mainly of two types :
+A.  Direct   Recursion 
+B.  Indirect Recursion
+
+What is the difference between direct and indirect recursion?
+A function fun is called direct recursive if it calls the same function fun.
+A function fun is called indirect recursive if it calls another function say fun_new and fun_new calls fun directly or indirectly.
+Difference between direct and indirect recursion has been illustrated in Table 1.
+
+// An example of direct recursion
+void directRecFun()
+{
+    // Some code....
+
+    directRecFun();
+
+    // Some code...
+}
+
+// An example of indirect recursion
+void indirectRecFun1()
+{
+    // Some code...
+
+    indirectRecFun2();
+
+    // Some code...
+}
+void indirectRecFun2()
+{
+    // Some code...
+
+    indirectRecFun1();
+
+    // Some code...
+}
+
+
+** DIRECT RECURSION IS DIVIDED INTO FOUR SUB TYPES :
+
+1.Tail Recursion: If a recursive function calling itself and that recursive call is the last statement in the function then it’s known as Tail Recursion.
+  After that call the recursive function performs nothing.
+  The function has to process or perform any operation at the time of calling and it does nothing at returning time.
+  Example:
+   void fun(int n) 
+   { 
+    if (n > 0) { 
+       printf("%d ", n); 
+       // Last statement in the function 
+       fun(n - 1); 
+    } 
+   } 
+
+  In general,
+ *Time Complexity For Tail Recursion : O(n)
+ *Space Complexity For Tail Recursion : O(n)
+
+  In case of loop the Space Complexity is O(1) so it is better to write code in loop instead of tail recursion in terms of Space Complexity which is more efficient than tail recursion.
+
+  Why space complexity is less in case of loop ? 
+   When the program executes,the main memory divided into three parts.One part for code section,second one is heap memory and another one is stack memory.
+   Program can directly access only the stack memory , it can’t directly access the heap memory so we need the help of pointer to access the heap memory. 
+
+   In case of loop when function “(void fun(int y))” executes there only one activation record created in stack memory(activation record created for only ‘y’ variable) 
+   so it takes only ‘one’ unit of memory inside stack so it’s space complexity is O(1) but in case of recursive function every time it calls itself for each call a separate activation record created in stack.
+   So if there’s ‘n’ no of call then it takes ‘n’ unit of memory inside stack so it’s space complexity is O(n).
+
+2.Head Recursion:If a recursive function calling itself and that recursive call is the first statement in the function then it’s known as Head Recursion.
+  There’s no statement, no operation before the call. The function doesn’t have to process or perform any operation at the time of calling and all operations are done at returning time.
+
+  Example:
+   void fun(int n) 
+   { 
+     if (n > 0) { 
+       // First statement in the function 
+       fun(n - 1); 
+       printf("%d ", n); 
+     } 
+   } 
+
+    In general,
+   *Time Complexity For Head Recursion: O(n)
+   *Space Complexity For Head Recursion: O(n)
+
+3.Tree Recursion: To understand Tree Recursion let’s first understand Linear Recursion.
+  If a recursive function calling itself for one time then it’s known as Linear Recursion.
+  Otherwise if a recursive function calling itself for more than one time then it’s known as Tree Recursion.
+    
+   In general,
+   *Time Complexity For Tree Recursion: O(2^n)
+   *Space Complexity For Tree Recursion: O(n)
+
+4.Nested Recursion: In this recursion, a recursive function will pass the parameter as a recursive call.
+  That means “recursion inside recursion”. Let see the example to understand this recursion.     
