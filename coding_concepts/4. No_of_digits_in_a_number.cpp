@@ -5,7 +5,7 @@
 
 //Number of digits in N here is 4
 
-// etter Solution: A better solution is to use mathematics to solve this problem. The number of digits in a number say N can be easily obtained by using the formula:
+//Better Solution: A better solution is to use mathematics to solve this problem. The number of digits in a number say N can be easily obtained by using the formula:
 //          ************ number of digits in N = log10(N) + 1. ********************
 
 #include<bits/stdc++.h>

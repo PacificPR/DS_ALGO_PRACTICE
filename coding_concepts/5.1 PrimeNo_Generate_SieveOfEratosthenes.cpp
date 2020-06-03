@@ -17,8 +17,12 @@ int main(){
     cout<<"Enter till what number Prime numbers to find\n"<<endl;
     cin>>n;
     int  *pr = new int[n+1];
+    for(i=0;i<=n;i++)
+        pr[i]=0;
+
     vector<int> prime;
-    for(i=2;i<=(n);i++){
+    prime.push_back(2);
+    for(i=3;i<=(n);i+=2){
         if(pr[i]==0){
             prime.push_back(i);
             for(j=2;i*j<=n;j++)
@@ -33,3 +37,5 @@ int main(){
 // as n approaches infinity, the time complexity of calculating all primes below n in the random access machine model is O(n log log n) operations, 
 // a direct consequence of the fact that the prime harmonic series asymptotically approaches log log n. 
 // It has an exponential time complexity with regard to input size, though, which makes it a pseudo-polynomial algorithm. The basic algorithm requires O(n) of memory.
+
+
