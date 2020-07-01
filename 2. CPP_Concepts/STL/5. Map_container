@@ -22,8 +22,17 @@ pair insert(keyvalue, mapvalue) – Adds a new element to the map
             kv.insert(pair<int, int>(1, 40));
 
 erase(iterator position) – Removes the element at the position pointed by the iterator
+                 or
+
+erase(key value) – Removes the element with the key given
 
 erase(const g)– Removes the key value ‘g’ from the map
 
 clear() – Removes all the elements from the map
 
+
+*******
+If there's an iterator it, to get the key values at that positon,
+
+    it->first gives the key
+    it->second gives the value
