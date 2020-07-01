@@ -1,0 +1,370 @@
+*** Why Bitwsie ?  
+Bitwise Operations are faster and closer to the system and sometimes optimize the program to a good level.
+
+                        ******* Bitwise Operators: ************
+
+There are different bitwise operations used in the bit manipulation. These bit operations operate on the individual bits of the bit patterns. Bit operations are fast and can be used in optimizing time complexity. Some common bit operators are:
+
+## NOT ( ~ ): Bitwise NOT is an unary operator that flips the bits of the number i.e., 
+if the ith bit is 0, it will change it to 1 and vice versa.
+Bitwise NOT is nothing but simply the one’s complement of a number.
+
+Lets take an example.
+    N = 5 = (101)2
+    ~N = ~5 = ~(101)2 = (010)2 = 2
+
+## AND ( & ): Bitwise AND is a binary operator that operates on two equal-length bit patterns.
+If both bits in the compared position of the bit patterns are 1, the bit in the resulting bit pattern is 1, otherwise 0.
+A = 5 = (101)2 , B = 3 = (011)2 
+A & B = (101)2 & (011)2= (001)2 = 1
+
+## OR ( | ): Bitwise OR is also a binary operator that operates on two equal-length bit patterns, similar to bitwise AND.
+If both bits in the compared position of the bit patterns are 0, the bit in the resulting bit pattern is 0, otherwise 1.
+A = 5 = (101)2 , B = 3 = (011)2
+A | B = (101)2 | (011)2 = (111)2 = 7
+
+## XOR ( ^ ): Bitwise XOR also takes two equal-length bit patterns.
+If both bits in the compared position of the bit patterns are 0 or 1, the bit in the resulting bit pattern is 0, otherwise 1.
+A = 5 = (101)2 , B = 3 = (011)2
+A ^ B = (101)2 ^ (011)2 = (110)2 = 6
+
+## Left Shift ( << ): Left shift operator is a binary operator which shift the some number of bits, in the given bit pattern, to the left and append 0 at the end.
+Left shift is equivalent to multiplying the bit pattern with  ( if we are shifting k bits ).
+1 << 1 = 2 = 21
+1 << 2 = 4 = 22 1 << 3 = 8 = 23
+1 << 4 = 16 = 24
+.
+.
+.
+1 << n = 2n
+
+********* So a << n = a*(2^n)
+
+
+## Right Shift ( >> ): Right shift operator is a binary operator which shift the some number of bits, in the given bit pattern, to the right and append 1 at the end. Right shift is equivalent to dividing the bit pattern with 2k ( if we are shifting k bits ).
+4 >> 1 = 2
+6 >> 1 = 3
+5 >> 1 = 2
+16 >> 4 = 1
+
+********* So a >> n = a/(2^n)
+
+
+
+################### TRUTH TABLE FOR BASIC BITWISE OPERATION ######################
+
+                X   Y   X&Y X|Y X^Y ~X
+        
+                0   0    0   0   0   1
+                0   1    0   1   1   1
+                1   0    0   1   1   0
+                1   1    1   1   0   0
+
+
+************* USING BIT MANIPULATION FOR SOME PROBLEMS :
+
+1.Given a list of numbers which has only 1 unique number , find that number.
+
+  Solution :
+  Eg-> 2,2,1,3,4,3,4 
+       1 should be returned
+
+  It can be solved by doing XOR operation on the whole list.
+  a) XOR of a number with itself is 0.        i.e.  A^A=0
+  b) XOR of a number with 0 is number itself. i.e.  0^B=B
+
+2. Find the two non-repeating elements in an array of repeating elements
+
+   Solution:
+   arr[] = {2, 4, 7, 9, 2, 4}
+
+   1) Get the XOR of all the elements.
+   xor = 2^4^7^9^2^4 = 14 (1110)
+
+   2) Get a number which has only one set bit of the xor.   
+   Since we can easily get the rightmost set bit, let us use it.
+    set_bit_no = xor & ~(xor-1) = (1110) & ~(1101) = 0010
+   Now set_bit_no will have only set as rightmost set bit of xor.
+
+   3) Now divide the elements in two sets and do xor of         
+   elements in each set and we get the non-repeating 
+   elements 7 and 9. Please see the implementation for this step.
+
+    /* Get the Xor of all elements */
+    for(i = 1; i < n; i++)  
+    Xor ^= arr[i];  
+      
+    /* Get the rightmost set bit in set_bit_no */
+    set_bit_no = Xor & ~(Xor-1); 
+    for(i = 0; i < n; i++)  
+    {  
+        if(arr[i] & set_bit_no)  
+        x = x ^ arr[i]; /*Xor of first set */
+        else
+        y = y ^ arr[i]; /*Xor of second set*/
+    }  
+    // x and y will contain the duplicate numbers
+
+
+3.  Calculate XOR from 1 to n.
+    Given a number n, the task is to find the XOR from 1 to n.
+
+     1- Find the remainder of n by moduling it with 4.
+     2- If rem = 0, then xor will be same as n.
+     3- If rem = 1, then xor will be 1.
+     4- If rem = 2, then xor will be n+1.
+     5- If rem = 3 ,then xor will be 0.
+
+     How does this work?
+     When we do XOR of numbers, we get 0 as XOR value just before a multiple of 4.
+     This keeps repeating before every multiple of 4.
+
+4.  How to know if a number is a power of 2?
+    //  Function to check if x is power of 2 
+    bool isPowerOfTwo(int x) 
+    { 
+     // First x in the below expression is 
+     // for  the case when x is 0  
+     return x && (!(x & (x - 1))); 
+    } 
+
+5.   Count set bits in an integer (1s in binary form).
+
+    while(n>0){
+        count += n&1;
+        n>>1;
+    }
+    
+        OR
+    Brian Kernighan's Alogirthm
+    while(n){
+        n = n&(n-1)
+        count++;
+    }
+
+   Example for Brian Kernighan’s Algorithm:
+
+   n =  9 (1001)
+   count = 0
+
+   Since 9 > 0, subtract by 1 and do bitwise & with (9-1)
+   n = 9&8  (1001 & 1000)
+   n = 8
+   count  = 1
+
+   Since 8 > 0, subtract by 1 and do bitwise & with (8-1)
+   n = 8&7  (1000 & 0111)
+   n = 0
+   count = 2
+
+   Since n = 0, return count which is 2 now.
+
+   Time Complexity: O(logn)
+
+
+6.  Count number of bits to be flipped to convert A to B
+    Given two numbers ‘a’ and b’. Write a program to count number of bits needed to be flipped to convert ‘a’ to ‘b’.
+    Example :
+
+    Input : a = 10, b = 20
+    Output : 4
+    Binary representation of a is 00001010
+    Binary representation of b is 00010100
+    We need to flip highlighted 4 bits in a
+    to make it b.
+
+  1. Calculate XOR of A and B.      
+        a_xor_b = A ^ B
+  2. Count the set bits in the above 
+     calculated XOR result.
+
+    In C++ we have inbuilt function for this : 
+    Number of 1-bits: __builtin_popcount(x) 
+
+7.  Equal Sum and XOR
+    Given a positive integer n, find count of positive integers i such that 0 <= i <= n and n+i = n^i
+
+    Example :
+
+    Input n = 12
+    Output: 4
+    12^i = 12+i hold only for i = 0, 1, 2, 3
+    for i=0, 12+0 = 12^0 = 12
+    for i=1, 12+1 = 12^1 = 13
+    for i=2, 12+2 = 12^2 = 14
+    for i=3, 12+3 = 12^3 = 15
+
+    An efficient solution is as follows
+    So n + i = n ^ i implies n & i = 0 
+
+    Hence our problem reduces to finding values of i such that n & i = 0.
+    How to find count of such pairs? We can use the count of unset-bits in the binary representation of n.
+
+    Hence, total such combinations are 2^(count of unset bits in n)
+     
+    int countValues(int n) 
+    { 
+    // unset_bits keeps track of count of un-set 
+    // bits in binary representation of n 
+    int unset_bits=0; 
+    while (n) 
+    { 
+        if ((n & 1) == 0) 
+            unset_bits++; 
+        n=n>>1; 
+    } 
+  
+    // Return 2 ^ unset_bits 
+    return 1 << unset_bits
+
+    }
+
+8.  Convert binary to Integer in C++ 
+    auto number = 0b011; 
+
+9.   The Quickest way to swap two numbers:
+     a ^= b;
+     b ^= a; 
+     a ^= b;
+
+10.  Flip all bits of a number : It can be done by a simple way, just simply subtract the number from the value obtained when all the bits are equal to 1 . 
+     Example : 
+     Number = 23,
+     Binary form: 10111;
+     After flipping digits number will be: 01000;
+     Value: 11111 = 31;
+
+11.  Given a set, find XOR of the XOR’s of all subsets.
+
+       // XOR is 1 only when n is 1, else 0  , n is no of elements in the set
+        if (n == 1) 
+           return Set[0]; 
+        else
+           return 0;  
+
+    How does this work?
+    The logic goes simple. Let us consider n’th element, it can be included in all subsets of remaining (n-1) elements.
+    The number of subsets for (n-1) elements is equal to 2(n-1) which is always even when n>1.
+    Thus, in the XOR result, every element is included even number of times and XOR of even occurrences of any number is 0.
+
+12. Find most significant set bit of a number
+    Given a number, find the most significant bit number which is set bit and which is in power of two  
+    Examples:
+
+    Input : 10
+    Output : 8
+    Binary representation of 10 is 1010
+    The most significant bit corresponds
+    to decimal number 8.
+
+    Input : 18
+    Output : 16
+
+    An efficient solution for a fixed size integer (say 32 bits) is to one by one set bits, then add 1 so that only the bit after MSB is set.
+    Finally right shift by 1 and return the answer
+
+    int setBitNumber(int n) 
+    { 
+    // Below steps set bits after  MSB (including MSB) 
+  
+    // Suppose n is 273 (binary 
+    // is 100010001). It does following 
+    // 100010001 | 010001000 = 110011001 
+
+    n |= n >> 1; 
+  
+    // This makes sure 4 bits   (From MSB and including MSB) are set. 
+    It does following 
+    // 110011001 | 001100110 = 111111111 
+
+    n |= n >> 2; 
+    n |= n >> 4; 
+    n |= n >> 8; 
+    n |= n >> 16; 
+  
+    // Increment n by 1 so that  there is only one set bit  which is just before original MSB. 
+    n now becomes 1000000000 
+
+    n = n + 1; 
+    // Return original MSB after shifting. 
+    // n now becomes 100000000 
+
+    return (n >> 1); 
+}   
+
+13.  Check if a number has bits in alternate pattern 
+     Example ;  Input : 10
+                Output : Yes
+                10 = (1010)2, has an alternate pattern.
+
+     a. Calculate num = n ^ (n >> 1). If n has an alternate pattern, 
+     then n ^ (n >> 1) operation will produce a number having set bits only.
+     b. Check whether all the bits in num are set or not
+
+14.  Check if all Bits are set in a number : 
+     Condition : ((n + 1) & n) == 0
+
+15.  Check if the ith bit is set in the binary form of the given number.
+     (Bit count start from 0 from RHS)
+
+     To check whether it’s ith bit is set or not, we can AND it with the number 2i .
+     The binary form of 2i contains only ith bit as set (or 1), else every bit is 0 there.
+     When we will AND it with N, and if the ith bit of N is set, then it will return a non zero number (2i to be specific), else 0 will be returned.
+
+     Using Left shift operator, we can write 2i as 1 << i . Therefore:
+
+    bool check (int N)
+    {
+        if( N & (1 << i) )
+            return true;
+        else
+            return false;
+    }
+    Example:
+    Let’s say N = 20 = {10100}2.
+    Now let’s check if it’s 2nd bit is set or not(starting from 0).
+    For that, we have to AND it with 22 = 1<<2 = {100}2 .
+    {10100} & {100} = {100} = 2^2 = 4(non-zero number), which means it’s 2nd bit is set.
+
+16. How to generate all the possible subsets of a set ?
+
+A big advantage of bit manipulation is that it can help to iterate over all the subsets of an N-element set.
+As we all know there are 2N possible subsets of any given set with N elements.
+What if we represent each element in a subset with a bit. A bit can be either 0 or 1, thus we can use this to denote whether the corresponding element belongs to this given subset or not.
+So each bit pattern will represent a subset.
+
+Consider a set A of 3 elements.
+A = {a, b, c}
+
+Now, we need 3 bits, one bit for each element. 1 represent that the corresponding element is present in the subset, whereas 0 represent the corresponding element is not in the subset. Let’s write all the possible combination of these 3 bits.
+
+0 = (000) = {}
+1 = (001) = {c}
+2 = (010) = {b}
+3 = (011) = {b, c}
+4 = (100) = {a}
+5 = (101) = {a, c}
+6 = (110) = {a, b}
+7 = (111) = {a, b, c}
+
+  void possibleSubsets(char A[], int N)
+    {
+        for(int i = 0;i < (1 << N); ++i)
+        {
+            for(int j = 0;j < N;++j)
+                if(i & (1 << j))
+                    cout << A[j] << ‘ ‘;
+            cout << endl;
+        }
+    }
+
+17.  x&(-x) : Returns the rightmost 1 in binary representation of x
+
+    (-x) is the two’s complement of x. (-x) will be equal to one’s complement of x plus 1.
+    Therefore (-x) will have all the bits flipped that are on the left of the rightmost 1 in x. 
+    So x & (-x) will return rightmost 1.
+
+18.  x | (1 << n) : Returns the number x with the nth bit set.
+    (1 << n) will return a number with only nth bit set. So if we OR it with x it will set the nth bit of x.
+
+
