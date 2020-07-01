@@ -1,0 +1,35 @@
+S.NO	   BFS	                                                    DFS
+----       ----                                                     ------
+
+1.(Def)    BFS stands for Breadth First Search.	                    DFS stands for Depth First Search.
+
+2.(DS)	   BFS(Breadth First Search) uses Queue data structure 	    DFS(Depth First Search) uses Stack data structure.
+           for finding the shortest path.
+
+3.         BFS can be used to find single source shortest path      In DFS, we might traverse through more edges to reach a destination vertex from a source.
+           in unweighted graph, because in BFS, we reach a vertex 
+           with minimum number of edges from a source vertex.	
+
+3.(Source) BFS is more suitable for searching verteces which are    DFS is more suitable when there are solutions away from source.
+           closer to the given source.	
+
+4.(suitable	  BFS considers all neighbors first and therefore 	    DFS is more suitable for game or puzzle problems. 
+for decision  not suitable for decision making trees used           We make a decision, then explore all paths through this decision. 
+  tree)       in games or puzzles.                                  And if this decision leads to win situation, we stop.
+
+5.(Time	       The Time complexity of BFS is O(V + E), where        The Time complexity of DFS is also O(V + E), 
+  complexity)   V stands for vertices and E stands for edges.	    where V stands for vertices and E stands for edges.
+
+6.(Speed)  BFS is slower than DFS.                                  DFS is faster than BFS.
+
+
+***Memory requirements: 
+ The stack size is bound by the depth whereas the queue size is bound by the width.
+ For a balanced binary tree with n nodes, that means the stack size would be log(n) but the queue size would b O(n).
+ Note that an explicit queue might not be needed for a BFS in all cases -- keeping a stack of child indices might be sufficient where feasible.
+
+***Speed: 
+ For a full search, both cases visit all the nodes without significant extra overhead.
+  If the search can be aborted when a matching element is found, 
+  BFS should typically be faster if the searched element is typically higher up in the search tree because it goes level by level.
+  DFS might be faster if the searched element is typically relatively deep and finding one of many is sufficient.
