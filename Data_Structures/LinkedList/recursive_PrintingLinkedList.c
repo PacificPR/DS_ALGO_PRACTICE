@@ -5,6 +5,7 @@ struct node {
     struct node* next;
 };
 
+// ******** TAIL RECURSION ************
 void displayINorder(struct node* p) {  //For printing linked list recursively in normal order
     
     while(p!=)) {
@@ -13,6 +14,7 @@ void displayINorder(struct node* p) {  //For printing linked list recursively in
     }
 }
 
+// ******** HEAD RECURSION ************
 void displayReverseOrder(struct node* p) {   //For printing linked list recursively in reverse order
     
     while(p!=)) {
