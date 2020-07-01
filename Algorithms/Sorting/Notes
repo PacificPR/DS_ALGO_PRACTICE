@@ -30,7 +30,7 @@ Thus reallly sllllooooowwww in worst cases.
 Heapsort is a comparison-based sorting algorithm that uses a binary heap data structure.
 Like mergesort, heapsort has a running time of O(n\log n),O(nlogn), and like insertion sort, heapsort sorts in-place, so no extra space is needed during the sort.
 
-The most direct competitor of quicksort is heapsort. 
+**********The most direct competitor of quicksort is heapsort. 
 
 Heapsort is typically somewhat slower than quicksort, but the worst-case running time is always Θ(nlogn). 
 Quicksort is usually faster, though there remains the chance of worst case performance except in the introsort variant, which switches to heapsort when a bad case is detected.
@@ -49,7 +49,9 @@ Since the three algorithms it uses are comparison sorts, it is also a comparison
 Introsort was invented by David Musser in Musser (1997), in which he also introduced introselect, a hybrid selection algorithm based on quickselect (a variant of quicksort), 
 which falls back to median of medians and thus provides worst-case linear complexity, which is optimal.
 
-Both algorithms were introduced with the purpose of providing generic algorithms for the C++ Standard Library which had both fast average performance and optimal worst-case performance, thus allowing the performance requirements to be tightened.
+Both algorithms were introduced with the purpose of providing generic algorithms for the C++ Standard Library which had both fast average performance 
+and optimal worst-case performance, thus allowing the performance requirements to be tightened.
+
 Introsort is in place and not stable.
 
 ### WHAT ABOUT SORTING ALOGRITHMS WITH Linear Time Complexity, like Count Sort ,Radix Sort :
