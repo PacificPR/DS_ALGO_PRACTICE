@@ -48,8 +48,8 @@ int main(){
             }
         }
 
-    //for(int i = 0;i<=num;i++)    
-    //cout<<"\n"<<i<<"th Prime Number :  "<<prime[i]<<endl;
-    cout<<"\n"<<num<<"th Prime Number :  "<<prime[num]<<endl;
+    for(int i = 0;i<=num;i++)    
+    cout<<"\n"<<i<<"th Prime Number :  "<<prime[i]<<endl;
+    //cout<<"\n"<<num<<"th Prime Number :  "<<prime[num]<<endl;
     return 0;
 }

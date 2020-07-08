@@ -163,6 +163,8 @@ Left shift is equivalent to multiplying the bit pattern with  ( if we are shifti
 
 
 6.  Count number of bits to be flipped to convert A to B
+    (** Hamming Distance, the no of different bits in two numbers)
+
     Given two numbers ‘a’ and b’. Write a program to count number of bits needed to be flipped to convert ‘a’ to ‘b’.
     Example :
 

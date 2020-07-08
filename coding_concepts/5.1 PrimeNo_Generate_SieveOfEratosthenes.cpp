@@ -31,6 +31,7 @@ int main(){
     }
     for(i=0;i<prime.size();i++)
         cout<<prime[i]<<"  ";
+    cout<<endl;
 }
 
 // As can be seen from the above by removing all constant offsets and constant factors and ignoring terms that tend to zero 

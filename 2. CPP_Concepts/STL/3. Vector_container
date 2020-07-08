@@ -111,4 +111,11 @@ When std::vector’s internal memory completely finishes then it increases the s
 // Inserts 20 at the end 
 	v.emplace_back(20); 
 
+***************** IMPORTANT *****************
+
+1. Suppose we want to initialise a 2D vector of N rows and M column, with a value 0.
+    vector<vector<int>> vect (rows,vector<int> (columns,0));
+
+2. Suppose we want to create a 2D vector of N rows and M column, and input values.
+    vector<vector<int>> (r,vector<int>(c))
 
