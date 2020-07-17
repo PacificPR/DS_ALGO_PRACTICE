@@ -1,0 +1,17 @@
+        ######## BINARY TREE ############
+
+$ Binary Trees are graphs or tree data structures where each node has up to a possible two branches (‘children’).
+  These are called the left branch and right branch, or, sometimes, the left child and right child.
+
+$ An external node is one without child branches, while an internal node has at least one child branch.
+
+$ A tree where every node (except for the leaves) has 2 branches is called a full binary tree. 
+
+$ A binary tree which is completely filled—except potentially the bottom level, which is filled from left to right—is called a complete binary tree.
+  Complete binary trees are important because they provide the best ratio between a tree’s height and the number of nodes.
+
+$ Degree :
+    Degree of a node is the total number of children of that node.
+    Degree of a tree is the highest degree of a node among all the nodes in the tree.
+
+$ 
