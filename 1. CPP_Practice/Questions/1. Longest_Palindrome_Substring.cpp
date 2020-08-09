@@ -20,8 +20,8 @@ public:
         
         int start=0;int end=0;
         for(int i=0;i<s.length();i++){
-            int l1=splitfromMid(s,i,i);
-            int l2=splitfromMid(s,i,i+1);
+            int l1=splitfromMid(s,i,i);     //For palindrom like racecar
+            int l2=splitfromMid(s,i,i+1);   //For palindrom like aabbaa
             l1=l1>l2?l1:l2;
             if(l1>end-start){
                 start = i-((l1-1)/2);

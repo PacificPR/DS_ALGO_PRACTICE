@@ -13,7 +13,8 @@
         int n = nums.size();
         for(int i=0;i<n-2;i++){
             int j = i+1;
-            int k = n-1; while(j<k){
+            int k = n-1; 
+            while(j<k){
                 int csum = nums[i]+nums[j]+nums[k]; 
                 if(csum==0){
                     vector<int>trip(3);
