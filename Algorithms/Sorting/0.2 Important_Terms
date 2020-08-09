@@ -1,10 +1,12 @@
 ###  What is in-place sorting?
 An in-place sorting algorithm uses constant extra space for producing the output (modifies the given array only). It sorts the list only by modifying the order of the elements within the list.
-For example, Insertion Sort and Selection Sorts are in-place sorting algorithms as they do not use any additional space for sorting the list and a typical implementation of Merge Sort is not in-place, also the implementation for counting sort is not in-place sorting algorithm.
+For example, Insertion Sort and Selection Sorts are in-place sorting algorithms as they do not use any additional space for sorting the list 
+and a typical implementation of Merge Sort is not in-place, also the implementation for counting sort is not in-place sorting algorithm.
 
 
 ###  What are Internal and External Sortings?
-When all data that needs to be sorted cannot be placed in-memory at a time, the sorting is called external sorting. External Sorting is used for massive amount of data. Merge Sort and its variations are typically used for external sorting. Some external storage like hard-disk, CD, etc is used for external storage.
+When all data that needs to be sorted cannot be placed in-memory at a time, the sorting is called external sorting.
+External Sorting is used for massive amount of data. Merge Sort and its variations are typically used for external sorting. Some external storage like hard-disk, CD, etc is used for external storage.
 When all data is placed in-memory, then sorting is called internal sorting.
 
 
@@ -18,7 +20,8 @@ Some Sorting Algorithms are stable by nature, such as Bubble Sort, Insertion
 Sort, Merge Sort, Count Sort etc.
 
 ###  Which sorting algorithms are unstable?
-Quick Sort, Heap Sort etc., can be made stable by also taking the position of the elements into consideration. This change may be done in a way which does not compromise a lot on the performance and takes some extra space, possibly \theta(n).
+Quick Sort, Heap Sort etc., can be made stable by also taking the position of the elements into consideration.
+This change may be done in a way which does not compromise a lot on the performance and takes some extra space, possibly \theta(n).
 
 ### Adaptive  Algorithm
 If order of the elements to be sorted of an input array matters (or) affects the time complexity of a sorting algorithm, then that algorithm is called “Adaptive” sorting algorithm.

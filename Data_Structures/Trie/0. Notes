@@ -1,0 +1,57 @@
+Tries:
+
+Tries are an extremely special and useful data-structure that are based on the prefix of a string. They are used to represent the “Retrieval” of data and thus the name Trie.
+
+A Trie is a special data structure used to store strings that can be visualized like a graph.
+It consists of nodes and edges. Each node consists of at max 26 children and edges connect each parent node to its children.
+These 26 pointers are nothing but pointers for each of the 26 letters of the English alphabet A separate edge is maintained for every edge.
+
+Strings are stored in a top to bottom manner on the basis of their prefix in a trie.
+All prefixes of length 1 are stored at until level 1, all prefixes of length 2 are sorted at until level 2 and so on.
+
+
+// Trie node
+struct TrieNode
+{
+     struct TrieNode *children[26];
+     bool isEndOfWord;
+     // isEndOfWord is true if the node represents end of a word
+};
+
+EG : 
+
+                      root
+                    /   |    \
+                    t   a     b
+                    |   |     |
+                    h   n     y
+                    |   |  \  |
+                    e   s  y  e
+                 /  |   |
+                 i  r   w
+                 |  |   |
+                 r  e   e
+                        |
+                        r
+
+
+COMPLEXITY : 
+
+Trie is an efficient information reTrieval data structure. Using Trie, search complexities can be brought to optimal limit (key length).
+If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N is number of keys in tree.
+Using Trie, we can search the key in O(M) time. However the penalty is on Trie storage requirements (Please refer Applications of Trie for more details)
+
+
+Strengths
+Sometimes Space-Efficient. If you're storing lots of words that start with similar patterns, tries may reduce the overall storage cost by storing shared prefixes once.
+Efficient Prefix Queries. Tries can quickly answer queries about words with shared prefixes, like:
+
+How many words start with "choco"?
+What's the most likely next letter in a word that starts with "strawber"?
+Weaknesses
+Usually Space-Inefficient. Tries rarely save space when compared to storing strings in a set.
+
+ASCII characters in a string are one byte each. Each link between trie nodes is a pointer to an address—eight bytes on a 64-bit system.
+So, the overhead of linking nodes together often outweighs the savings from storing fewer characters.
+
+Not Standard. Most languages don't come with a built-in trie implementation. You'll need to implement one yourself.

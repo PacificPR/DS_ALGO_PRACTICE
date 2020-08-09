@@ -9,6 +9,16 @@ int main(){
         v.push_back(i);
         cout<<v.size()<<"\t"<<v.capacity()<<"\t"<<v.max_size()<<endl;
     }
+/*
+    for(int i=0;i<v.size();i++)
+        cout<<" "<<v[i];
+
+    cout<<"\nPOP_BACK NOW\n";
+    v.pop_back();
+*/
+
+    for(int i=0;i<v.size();i++)
+        cout<<" "<<v[i];
     return 0;
     
 }

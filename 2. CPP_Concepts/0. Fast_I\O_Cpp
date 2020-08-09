@@ -17,3 +17,8 @@ So if you untie cin from cout, you must make sure to flush cout manually every t
 In conclusion, know what each of them does, understand the consequences, and then decide if you really want or need the possible side effect of speed improvement.
 
 
+$$$$$$$$$$$ 
+    Actually,cin and cout can be faster than scanf() and printf()            
+    But it depends.If you are not using scanf() and printf() ,then at the start of main() use std::ios_base::sync_with_stdio(false);.
+    This turns off the intermixing calls to scanf()/printf() with operations on cin/cout. Actually,by default cin/cout wastes time synchronizing with c library’s stdio buffers.
+

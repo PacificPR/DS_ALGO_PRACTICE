@@ -49,7 +49,7 @@ void MergeSort(int *a,int l,int h){
         MergeSort(a,l,mid);
         MergeSort(a,mid+1,h);
         merge(a,l,mid,h);
-}
+    }
 }
 
 void main(){

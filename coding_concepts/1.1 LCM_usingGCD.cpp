@@ -10,10 +10,10 @@ using namespace std;
 
 class LCM {
     public:
-        int gcd(int a,int b){
-            if(b==0)
-                return a;
-            return gcd(b,a%b);
+        int gcd(int a,int b){       
+            if(b==0)                //b
+                return a;           //a
+            return gcd(b,a%b);      //ba
         }
 
         int lcm(long long a,long long b){

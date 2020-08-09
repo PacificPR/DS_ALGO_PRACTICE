@@ -88,22 +88,24 @@ Left shift is equivalent to multiplying the bit pattern with  ( if we are shifti
 
    3) Now divide the elements in two sets and do xor of         
    elements in each set and we get the non-repeating 
-   elements 7 and 9. Please see the implementation for this step.
+   elements 7 and 9. 
 
     /* Get the Xor of all elements */
     for(i = 1; i < n; i++)  
     Xor ^= arr[i];  
       
     /* Get the rightmost set bit in set_bit_no */
+    //Find right most set bit in that XOR value
+    //this bit must be 1 in one of the unique numbers and 0 in another unique number
     set_bit_no = Xor & ~(Xor-1); 
     for(i = 0; i < n; i++)  
     {  
         if(arr[i] & set_bit_no)  
-        x = x ^ arr[i]; /*Xor of first set */
+        x = x ^ arr[i]; /*Xor of first set of numbers whose rightmostset bit is 1*/
         else
-        y = y ^ arr[i]; /*Xor of second set*/
+        y = y ^ arr[i]; /*Xor of second set of numbers whose rightmostset bit is 0*/
     }  
-    // x and y will contain the duplicate numbers
+    // x and y will contain the duplicate numbers,as duplicates are XORed
 
 
 3.  Calculate XOR from 1 to n.
@@ -331,7 +333,7 @@ Left shift is equivalent to multiplying the bit pattern with  ( if we are shifti
 16. How to generate all the possible subsets of a set ?
 
 A big advantage of bit manipulation is that it can help to iterate over all the subsets of an N-element set.
-As we all know there are 2N possible subsets of any given set with N elements.
+As we all know there are 2^N possible subsets of any given set with N elements.
 What if we represent each element in a subset with a bit. A bit can be either 0 or 1, thus we can use this to denote whether the corresponding element belongs to this given subset or not.
 So each bit pattern will represent a subset.
 
@@ -354,7 +356,7 @@ Now, we need 3 bits, one bit for each element. 1 represent that the correspondin
         for(int i = 0;i < (1 << N); ++i)
         {
             for(int j = 0;j < N;++j)
-                if(i & (1 << j))
+                if(i & (1 << j))            //Check if jth bit is set then display the corresponding no.
                     cout << A[j] << ‘ ‘;
             cout << endl;
         }

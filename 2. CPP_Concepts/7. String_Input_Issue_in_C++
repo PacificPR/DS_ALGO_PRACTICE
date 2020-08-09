@@ -1,0 +1,21 @@
+Problem :
+Suppose the input format is
+
+Integer\n
+One line of string input\n
+Integer\n
+
+… And so on.
+Then when you scan integer using cin or scanf then it will scan the integer till it reads “\n” or " " ( blank space)
+Issue will be there when there is one \n char after integer.
+And it will stop before “\n”
+Now when you try to read using getline you will get blank string in input because getline will directly get “\n” in input and it will stop reading.
+
+Whereas getline will also scan till it reads “\n”
+And will stop after \n.
+
+Solution :
+Add extra getline/getchar whenever it’s required according to input format and it will start working as you want it to.
+
+Now that you understand the actual issue, you can easily resolve it by putting extra getline(); whenever required.
+Just remember where will you have extra newline chars in input

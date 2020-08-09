@@ -3,3 +3,12 @@
 
 Priority queues are a type of container adapters, specifically designed such that the first element of the queue is the greatest of all elements in the queue 
 and elements are in non increasing order(hence we can see that each element of the queue has a priority{fixed order}).
+
+present in  <queue>
+
+priority_queue<int> pq;
+
+We can use it with pair also,
+    priority_queue<pair<int,int>> pq;
+
+    This will store the pairs in non increasing order of pair.first values

@@ -1,0 +1,15 @@
+
+            ############ MID CONCEPT ###############
+
+We have to find middle elements in many questions.
+EG : Binary Search 
+
+So we use int mid = (low + high)/2 , generally
+
+But it's not a good practice as it can lead to integer overflow for large value of low and high
+
+$$ So we should use,  
+                
+          int mid = low + (high-low)/2;
+
+It avoids integer overflow , cool xD
