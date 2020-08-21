@@ -1,0 +1,23 @@
+The following three are known to be the preorder, inorder and postorder sequences of a binary tree. But it is not known which is which.
+MBCAFHPYK
+KAMCBYPFH
+MABCKYFPH
+Pick the true statement from the following.
+
+A   I and II are preorder and inorder sequences, respectively
+B   I and III are preorder and postorder sequences, respectively
+C   II is the inorder sequence, but nothing more can be said about the other two sequences
+D   II and III are the preorder and inorder sequences, respectively
+
+
+ANS : D
+Explanation
+
+
+The approach to solve this question is to first find 2 sequences whose first and last element is same. The reason being first element in the Pre-order of any binary tree is the root and last element in the Post-order of any binary tree is the root.
+Looking at the sequences given,
+Pre-order   =   KAMCBYPFH
+Post-order  =  MBCAFHPYK
+Left-over sequence  MABCKYFPH will be in order.
+
+
