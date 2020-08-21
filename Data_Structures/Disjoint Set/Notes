@@ -1,0 +1,125 @@
+A Disjoint-set data structure (also called a union–find data structure ) is a data structure that tracks a set of elements partitioned into a number of disjoint  subsets.
+It provides near-constant-time operations (bounded by the inverse Ackermann function) to add new sets, merge existing sets, and to determine whether elements are in the same set.
+
+        #### APPLICATION  ####
+In addition to many other uses , disjoint-sets play a key role in Kruskal's algorithm for finding the minimum spanning tree of a graph.
+It is used to determine whether two vertices belong to the same component, or whether adding an edge between them would result in a cycle.
+
+
+    ############ OPERATIONS : ##############
+
+$$ MakeSet
+The MakeSet operation makes a new set by creating a new element with a unique id, a rank of 0, and a parent pointer to itself. 
+The parent pointer to itself indicates that the element is the representative member of its own set.
+The MakeSet operation has {\displaystyle O(1)}O(1) time complexity, so initializing n sets has {\displaystyle O(n)}O(n) time complexity.
+
+Pseudocode:
+
+function MakeSet(x) is
+    if x is not already present THEN
+        add x to the disjoint-set tree
+        x.parent := x
+        x.rank   := 0           //Optional
+        x.size   := 1           //Optional
+
+
+$$ Find
+Find(x) follows the chain of parent pointers from x up the tree until it reaches a root element, whose parent is itself.
+This root element is the representative member of the set to which x belongs, and may be x itself.
+
+$$ Path compression
+Path compression flattens the structure of the tree by making every node point to the root whenever Find is used on it.
+This is valid, since each element visited on the way to a root is part of the same set.
+The resulting flatter tree speeds up future operations not only on these elements, but also on those referencing them.
+
+Tarjan and Van Leeuwen also developed one-pass Find algorithms that are more efficient in practice 
+while retaining the same worst-case complexity: path splitting and path halving.
+
+$$ Path halving (Check Wiki)
+Path halving makes every other node on the path point to its grandparent.
+
+$$ Path splitting (Check Wiki)
+Path splitting makes every node on the path point to its grandparent.
+
+Path compression	:
+ function Find(x)
+   if x.parent ≠ x
+     x.parent := Find(x.parent)
+   return x.parent
+
+$$ Union
+Union(x,y) uses Find to determine the roots of the trees x and y belong to.
+ If the roots are distinct, the trees are combined by attaching the root of one to the root of the other.
+ If this is done naively, such as by always making x a child of y, the height of the trees can grow as O(n).
+### To prevent this union by rank or union by size is used.
+
+$$ by rank
+Union by rank always attaches the shorter tree to the root of the taller tree. Thus, the resulting tree is no taller than the originals unless they were of equal height, in which case the resulting tree is taller by one node.
+
+To implement union by rank, each element is associated with a rank. Initially a set has one element and a rank of zero. If two sets are unioned and have the same rank, the resulting set's rank is one larger; otherwise, if two sets are unioned and have different ranks, the resulting set's rank is the larger of the two. Ranks are used instead of height or depth because path compression will change the trees' heights over time.
+
+$$ by size
+Union by size always attaches the tree with fewer elements to the root of the tree having more elements.
+
+Pseudocode
+
+                        #### Union by rank	####
+ function Union(x, y) is
+     xRoot := Find(x)
+     yRoot := Find(y)
+ 
+     if xRoot = yRoot then
+         // x and y are already in the same set
+         return
+ 
+     // x and y are not in same set, so we merge them
+     if xRoot.rank < yRoot.rank then
+         xRoot, yRoot := yRoot, xRoot // swap xRoot and yRoot
+    //MAKING SURE xRoot's rank is Greater , then making yRoot.parent as xRoot
+
+     // merge yRoot into xRoot
+     yRoot.parent := xRoot
+     if xRoot.rank = yRoot.rank then
+         xRoot.rank := xRoot.rank + 1
+
+
+
+                    #### Union by size ####
+
+ function Union(x, y) is
+     xRoot := Find(x)
+     yRoot := Find(y)
+ 
+     if xRoot = yRoot then
+         // x and y are already in the same set
+         return
+ 
+     // x and y are not in same set, so we merge them
+     if xRoot.size < yRoot.size then
+         xRoot, yRoot := yRoot, xRoot // swap xRoot and yRoot
+    //MAKING SURE xRoot's size is Greater , then making yRoot.parent as xRoot
+ 
+     // merge yRoot into xRoot
+     yRoot.parent := xRoot
+     xRoot.size := xRoot.size + yRoot.size
+
+
+###########  Time complexity
+Without path compression, union by rank, or union by size, the height of trees can grow unchecked as O(n),implying that Find and Union operations will take O(n) time.
+
+$$ Using path compression alone gives a worst-case running time of  Theta ( n+f.(1+logn) )
+for a sequence of n MakeSet operations (and hence at most n-1 Union operations) and f Find operations.
+
+$$ Using union by rank alone gives a running-time of  O(mlog n) (tight bound) for m operations of any sort of which n are MakeSet operations.
+
+$$ Using both path compression, splitting, or halving and union by rank or size ensures that the amortized time per operation is only	O(α(n)) 
+for m disjoint-set operations on n elements, which is optimal,where  alpha(n) is the inverse Ackermann function. 
+This function has a value 
+(α(n))<5 for any value of n that can be written in this physical universe, so the disjoint-set operations take place in essentially constant time.
+
+Complexity of Union-by-Size + Path Compression
+• Time complexity for m >= n operations on n elements has been shown to be O(m log* n). // essentially same as O(m alpha(m,n))
+– Amortized complexity is then O(log* n)
+
+
+
