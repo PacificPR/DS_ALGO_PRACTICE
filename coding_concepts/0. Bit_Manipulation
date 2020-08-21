@@ -111,11 +111,11 @@ Left shift is equivalent to multiplying the bit pattern with  ( if we are shifti
 3.  Calculate XOR from 1 to n.
     Given a number n, the task is to find the XOR from 1 to n.
 
-     1- Find the remainder of n by moduling it with 4.
-     2- If rem = 0, then xor will be same as n.
-     3- If rem = 1, then xor will be 1.
-     4- If rem = 2, then xor will be n+1.
-     5- If rem = 3 ,then xor will be 0.
+     Step 1- Find the remainder of n by moduling it with 4.
+     Step 2- If rem = 0, then xor will be same as n.
+     Step 3- If rem = 1, then xor will be 1.
+     Step 4- If rem = 2, then xor will be n+1.
+     Step 5- If rem = 3 ,then xor will be 0.
 
      How does this work?
      When we do XOR of numbers, we get 0 as XOR value just before a multiple of 4.
@@ -237,12 +237,13 @@ Left shift is equivalent to multiplying the bit pattern with  ( if we are shifti
      Binary form: 10111;
      After flipping digits number will be: 01000;
      Value: 11111 = 31;
+     SO, 31-23 = 8 , which is equal to   : 01000
 
 11.  Given a set, find XOR of the XOR’s of all subsets.
 
-       // XOR is 1 only when n is 1, else 0  , n is no of elements in the set
+       // XOR is 1 only when n is 1, else 0 , n is no of elements in the set
         if (n == 1) 
-           return Set[0]; 
+           return 1; 
         else
            return 0;  
 

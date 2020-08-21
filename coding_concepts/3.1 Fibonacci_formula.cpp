@@ -3,8 +3,8 @@
 #include<cmath> 
 
 int fib(int n) { 
-double phi = (1 + sqrt(5)) / 2; 
-return round(pow(phi, n) / sqrt(5)); 
+double phi = (1 + sqrt(5)) / 2;         //Golden Ration, i.e 1.618....
+return round(pow(phi, n) / sqrt(5));    //For nth fibonacci number
 } 
 
 // Driver Code 

@@ -125,4 +125,18 @@ void indirectRecFun2()
    *Space Complexity For Tree Recursion: O(n)
 
 4.Nested Recursion: In this recursion, a recursive function will pass the parameter as a recursive call.
-  That means “recursion inside recursion”. Let see the example to understand this recursion.     
+  That means “recursion inside recursion”.
+
+  Let see the example to understand this recursion.     
+
+    int fun(int n) 
+    { 
+        if (n > 100) 
+            return n - 10; 
+
+        // A recursive function passing parameter as a recursive call or recursion inside the recursion 
+        return fun(fun(n + 11)); 
+    } 
+  
+
+    
