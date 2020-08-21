@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <limits.h>
+
+using namespace std;
+
+int main() {
+	int T;
+	cin>>T;
+	while(T--){
+	    string s;
+	    cin>>s;
+	    bool vis[128] = {false};    // Used to count distinct chars
+	    int dist_count=0;
+	    for(char c: s){             
+	        if(vis[c]==false){
+	            vis[c]=true;
+	            dist_count++;   // Count no of distinct characters
+	        }
+	    }
+	    int left=0,right=0,count=0,min_window=INT_MAX;
+	    int curr[128] = {0};
+	    for(right =0;right<s.size();right++){
+	        curr[s[right]]++;
+	        if(curr[s[right]]==1)   //1 occurence of the char, so add 1 to current couting
+	            count++;
+	        
+	       if(count == dist_count){ //When all distinct chars are counted, it should add to dist_count
+	        //Check if we can decrease window length
+                while(curr[s[left]]>1){     //This leftmost char exists in window more than once,          
+                                            // so move left to next pos, and decrese it's current count 
+	               --curr[s[left]];
+	               left++;
+	           }
+	           int curr_window = right-left+1;
+	           if(curr_window<min_window)
+	                min_window = curr_window;
+	           
+	       }
+	    }
+	    cout<<"MIN WINDOW LENGTH : "<< min_window<<endl;
+	}
+	return 0;
+}
