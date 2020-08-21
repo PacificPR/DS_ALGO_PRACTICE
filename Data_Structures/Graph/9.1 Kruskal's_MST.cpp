@@ -164,8 +164,9 @@ Below are the steps for finding MST using Kruskal’s algorithm
 Sort all the edges in non-decreasing order of their weight.
 Pick the smallest edge. Check if it forms a cycle with the spanning tree formed so far. If cycle is not formed, include this edge. Else, discard it.
 Repeat step#2 until there are (V-1) edges in the spanning tree.
-Here are some key points which will be useful for us in implementing the Kruskal’s algorithm using STL.
 
+
+Here are some key points which will be useful for us in implementing the Kruskal’s algorithm using STL.
 
 
 Use a vector of edges which consist of all the edges in the graph and each item of a vector will contain 3 parameters: source, destination and the cost of an edge between the source and destination.

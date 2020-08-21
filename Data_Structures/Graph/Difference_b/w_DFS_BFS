@@ -33,3 +33,5 @@ for decision  not suitable for decision making trees used           We make a de
   If the search can be aborted when a matching element is found, 
   BFS should typically be faster if the searched element is typically higher up in the search tree because it goes level by level.
   DFS might be faster if the searched element is typically relatively deep and finding one of many is sufficient.
+
+

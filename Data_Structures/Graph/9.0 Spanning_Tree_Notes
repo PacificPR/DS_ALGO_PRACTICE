@@ -1,0 +1,72 @@
+
+                #####################     Spanning Tree   ############################
+
+A spanning tree is a subset of Graph G, which has all the vertices covered with minimum possible number of edges. 
+Hence, a spanning tree does not have cycles and it cannot be disconnected..
+
+By this definition, we can draw a conclusion that every connected and undirected Graph G has at least one spanning tree. 
+A disconnected graph does not have any spanning tree, as it cannot be spanned to all its vertices.
+
+Mathematical Properties of Spanning Tree
+
+    Spanning tree has n-1 edges, where n is the number of nodes (vertices).
+
+    From a complete graph, by removing maximum e - n + 1 edges, we can
+    construct a spanning tree. As, (n-1) edges are required for spanning trees.
+
+    A complete graph can have maximum n^(n-2) number of spanning trees.
+
+
+
+                ##################### Minimum Spanning Tree (MST) ##################
+
+In a weighted graph, a minimum spanning tree is a spanning tree that has minimum weight than all other spanning trees of the same graph. In real-world situations, this weight can be measured as distance, congestion, traffic load or any arbitrary value denoted to the edges.
+Minimum Spanning-Tree Algorithm
+
+We shall learn about two most important spanning tree algorithms here −
+
+    Kruskal's Algorithm
+
+    Prim's Algorithm
+
+Both are greedy algorithms.
+
+************** Spanning Tree Applications
+
+    * Computer Network Routing Protocol
+    * Cluster Analysis
+
+
+There are two famous algorithms for finding the Minimum Spanning Tree:
+
+$$$$$$$ Kruskal’s Algorithm
+Kruskal’s Algorithm builds the spanning tree by adding edges one by one into a growing spanning tree. Kruskal's algorithm follows greedy approach as in each iteration it finds an edge which has least weight and add it to the growing spanning tree.
+
+Algorithm Steps:
+
+Sort the graph edges with respect to their weights.
+Start adding edges to the MST from the edge with the smallest weight until the edge of the largest weight.
+Only add edges which doesn't form a cycle , edges which connect only disconnected components.
+So now the question is how to check if 2 vertices are connected or not ?
+
+This could be done using DFS which starts from the first vertex, then check if the second vertex is visited or not.
+But DFS will make time complexity large as it has an order of O(V+E) where V is the number of vertices, E is the number of edges. So the best solution is "Disjoint Sets":
+Disjoint sets are sets whose intersection is the empty set so it means that they don't have any element in common.
+
+Time Complexity:
+In Kruskal’s algorithm, most time consuming operation is sorting because the
+total complexity of the Disjoint-Set operations will be O(ElogV), which is the overall Time Complexity of the algorithm.
+
+$$$$$$$ Prim'sm Algorithm
+
+Prim’s Algorithm also use Greedy approach to find the minimum spanning tree. In Prim’s Algorithm we grow the spanning tree from a starting position. Unlike an edge in Kruskal's, we add vertex to the growing spanning tree in Prim's.
+
+Algorithm Steps:
+
+Maintain two disjoint sets of vertices. One containing vertices that are in the growing spanning tree and other that are not in the growing spanning tree.
+Select the cheapest vertex that is connected to the growing spanning tree and is not in the growing spanning tree and add it into the growing spanning tree.
+This can be done using Priority Queues. Insert the vertices, that are connected to growing spanning tree, into the Priority Queue.
+Check for cycles. To do that, mark the nodes which have been already selected and insert only those nodes in the Priority Queue that are not marked.
+
+Time Complexity:
+The time complexity of the Prim’s Algorithm is O((V+E)logV) because each vertex is inserted in the priority queue only once and insertion in priority queue take logarithmic time.
