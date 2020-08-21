@@ -1,0 +1,15 @@
+An instance of HashMap has two parameters that affect its performance: initial capacity and load factor.
+The capacity is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created. 
+
+Load Factor
+The Load factor is a measure that decides when to increase the HashMap capacity to maintain the get() and put() operation complexity of O(1).
+The default load factor of HashMap is 0.75f (75% of the map size).
+
+
+
+If you want to keep get and put complexity O(1), it is advisable to have a load factor around 0.75.
+
+####  Correlation between performance , hash collision & loading factor ?
+Lower load factor = more free buckets = less chances of collision = high performance = high space requirement.
+
+
