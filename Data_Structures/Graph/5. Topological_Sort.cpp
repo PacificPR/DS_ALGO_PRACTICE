@@ -13,9 +13,13 @@ $$$$$$ The first vertex in topological sorting is always a vertex with in-degree
 
 Build systems :
 
-Consider a source code structure where you are building several libraries (DLLs) and they have dependencies on each other. For example, to build dll A, you must have built DLLs B, C an D (Maybe you have a reference of B,C and D in the project that builds A).
-Let's mark a dependency edge from each of B, C and D to A implying that A depends on the other three and can only be built once each of the three are built. Technically speaking, (u,v) => An edge from u to v implies v.dll can be built only when u.dll is already built.
-After constructing a graph of these dlls and dependency edges, you can conclude that a successful build is possible iff the resulting graph is acyclic (Ignoring advanced ways of resolving cyclic dependencies like asmmeta [1] files). How does the build system decide in which order to build these dlls? It sorts them topologically.
+Consider a source code structure where you are building several libraries (DLLs) and they have dependencies on each other.
+For example, to build dll A, you must have built DLLs B, C an D (Maybe you have a reference of B,C and D in the project that builds A).
+Let's mark a dependency edge from each of B, C and D to A implying that A depends on the other three and can only be built once each of the three are built.
+Technically speaking, (u,v) => An edge from u to v implies v.dll can be built only when u.dll is already built.
+After constructing a graph of these dlls and dependency edges, you can conclude that a successful build is possible iff the resulting graph is acyclic (Ignoring advanced ways of resolving cyclic dependencies like asmmeta [1] files). 
+
+How does the build system decide in which order to build these dlls? It sorts them topologically.
 Therefore, in an order like X->Z->T->B->D->C->A, it can start building X (which may only depend on external assemblies already built), then follow the topologically sorted list of assemblies.
 
 */

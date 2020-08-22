@@ -1,14 +1,41 @@
+/*
+#####   Kahn’s algorithm for Topological Sorting
+
+Algorithm: Steps involved in finding the topological ordering of a DAG:
+Step-1: Compute in-degree (number of incoming edges) for each of the vertex present in the DAG and initialize the count of visited nodes as 0.
+
+Step-2: Pick all the vertices with in-degree as 0 and add them into a queue (Enqueue operation)
+
+Step-3: Remove a vertex from the queue (Dequeue operation) and then.
+        A. Increment count of visited nodes by 1.
+        B. Decrease in-degree by 1 for all its neighboring nodes.
+        C. If in-degree of a neighboring nodes is reduced to zero, then add it to the queue.
+
+Step 4: Repeat Step 3 until the queue is empty.
+
+Step 5: If count of visited nodes is not equal to the number of nodes in the graph then the topological sort is not possible for the given graph.
+
+#### Complexity Analysis:
+
+$$$$$ Time Complexity: O(V+E).
+The outer for loop will be executed V number of times and the inner for loop will be executed E number of times.
+
+$$$$$ Auxillary Space: O(V).
+The queue needs to store all the vertices of the graph. So the space required is O(V)
+
+*/
+
 #include<iostream>
 #include<vector>
 #include<queue>
 
 using namespace std;
 
-vector<int> topological_sorting(int numVertex,vector<vector<int>> &graph) {
+int topological_sorting(int numVertex,vector<vector<int>> &graph) {
     vector <int> indegree(graph.size(), 0);
     queue<int> q;
-    vector<int> solution;
-    
+    //vector<int> solution;
+    int count = 0;   
     for(int i = 0; i < graph.size(); i++) {
         for(int j = 0; j < graph[i].size(); j++) { 
             //iterate over all edges
@@ -28,10 +55,12 @@ vector<int> topological_sorting(int numVertex,vector<vector<int>> &graph) {
     while(q.size() > 0) {
         int currentNode = q.front();
         q.pop();
-        solution.push_back(currentNode);
+        count++;
+        //solution.push_back(currentNode);
         for(int j = 0; j < graph[currentNode].size(); j++)
         { 
         //remove all edges
+        
             int newNode = graph[currentNode][j];
             indegree[newNode]--;
             if(indegree[newNode] == 0) 
@@ -42,7 +71,7 @@ vector<int> topological_sorting(int numVertex,vector<vector<int>> &graph) {
         }
     }
     
-    return solution;
+    return count;
 }
 int main() 
 { 
@@ -62,7 +91,7 @@ int main()
 	
 	cout << " Topological Sort of the given graph \n"; 
 	vector<int> ans = topological_sorting(n,graph); 
-    if(ans.size()==n){
+    if(count==n){
         cout<<"No Cycle Detected: ";
         cout<<"Topological Order : ";
         for(int i:ans)

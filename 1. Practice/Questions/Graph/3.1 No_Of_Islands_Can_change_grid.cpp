@@ -1,6 +1,5 @@
 /* This one is more effecient in terms of memory and speed
    But the original grid is changed for this
-
 */
 #include<iostream>
 #include<vector>
