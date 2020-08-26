@@ -2,6 +2,20 @@
 
 A stringstream associates a string object with a stream allowing you to read from the string as if it were a stream (like cin).
 
+   A stringstream is similar to input/output file stream. 
+   We need to declare a stringstream just like an fstream, 
+
+   Example:       
+   stringstream ss;
+
+
+   and, like an fstream or cout, we can write to it:
+   ss << myString;  
+
+   and we can read from it:
+   ss >> myChar; 
+
+
 Basic methods are –
 
 clear() — to clear the stream

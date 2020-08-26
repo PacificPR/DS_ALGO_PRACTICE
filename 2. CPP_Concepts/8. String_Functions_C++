@@ -1,0 +1,12 @@
+
+#### String conversion using stoi() or atoi()
+stoi() : The stoi() function takes a string as an argument and returns its value. 
+         Example:
+            string str1 = "49";
+            int myint1 = stoi(str1);  -> 49 in int
+
+atoi() : The atoi() function takes a character array or string literal as an argument and returns its value. 
+            char *str1 = "419";
+            int num1 = atoi(str1);  -> 419 in int
+
+
