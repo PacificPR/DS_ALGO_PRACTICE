@@ -6,8 +6,8 @@ using namespace std;
 
 class DisjointSet{
 
-    unordered_map<int,int> rank;
-    unordered_map<int,int> parent;
+    unordered_map<int,int> rank;    //Or directly use a pointer, then create array of V size,as rank[V]=rank_value;
+    unordered_map<int,int> parent;  //Same for parent
 
     public:    
     void makeSet(int a){
